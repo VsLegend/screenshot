@@ -15,7 +15,7 @@ import org.bytedeco.opencv.opencv_core.IplImage;
  * @Date 2019/11/20 17:45
  * @Description 图片截取
  */
-public class ScreemShot {
+public class ScreenShot {
 
   /**
    * 获取视频时长(单位：秒)
