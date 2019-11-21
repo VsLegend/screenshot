@@ -81,7 +81,7 @@
     </dependency>
 
 
-    <!--ffmpeg音视频转换-->
+    <!--Java Audio Video Encoder音视频转换-->
     <dependency>
       <groupId>ws.schild</groupId>
       <artifactId>jave-all-deps</artifactId>
