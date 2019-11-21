@@ -1,4 +1,4 @@
-package com.example.screensoot.utils;
+package com.example.screenshot.utils;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -17,7 +17,7 @@ import ws.schild.jave.MultimediaObject;
 public class MediaConversion {
 
   /**
-   * 视频转语音
+   * 视频转语音 同时音频之间也可以互相转换
    */
   public static void videoToVoice(String sourcePath, String targetPath, String sourceType)
       throws EncoderException, MalformedURLException {
@@ -35,7 +35,8 @@ public class MediaConversion {
    * @param channels 声道 1单声道 2双声道
    * @param samplingRate 采样频率 kHZ 8000 11025 22050 44100 48000
    */
-  public static void videoToVoice(String sourcePath, String sourceType, String targetPath, String formatType,
+  public static void videoToVoice(String sourcePath, String sourceType, String targetPath,
+      String formatType,
       String fileType, Integer bitRate, Integer channels, Integer samplingRate)
       throws EncoderException, MalformedURLException {
     File target = new File(targetPath);
