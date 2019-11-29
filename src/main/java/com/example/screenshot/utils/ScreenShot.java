@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FFmpegFrameRecorder;
 import org.bytedeco.javacv.Frame;
@@ -92,8 +91,15 @@ public class ScreenShot {
     FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(targetPath, 1);
     grabber.start();
     // 输出格式
-    recorder.setAudioCodec(avcodec.AV_CODEC_ID_PCM_S16LE);
+// We don't want variable bitrate audio
+    recorder.setAudioOption("crf", "0");
+    // Highest quality
+    recorder.setAudioQuality(0);
+    // 192 Kbps
+    recorder.setAudioBitrate(grabber.getAudioBitrate());
+    recorder.setSampleRate(grabber.getSampleRate());
     recorder.setAudioChannels(grabber.getAudioChannels());
+    recorder.setAudioCodec(grabber.getAudioCodec());
     recorder.start();
     Frame frame = null;
     while (null != (frame = grabber.grabFrame(true, false, true, true))) {
@@ -102,9 +108,9 @@ public class ScreenShot {
   }
 
   public static void main(String[] args) throws IOException {
-//    String source = "F:\\Video\\NeZha.mp4";
-//    String target = "F:\\Video\\nezha.png";
-//    screenShot(source, target);
+    String source = "F:\\Video\\NeZha.mp4";
+    String target = "F:\\Video\\nezha.wav";
+    videoToVoice(source, target);
     System.out.println(System.currentTimeMillis());
   }
 
